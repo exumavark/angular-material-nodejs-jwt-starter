@@ -1,0 +1,36 @@
+<div class="basic-container">
+   <mat-card class="login-card">
+      <mat-card-header>
+         <mat-card-title>
+            <h2 class="h3 mb-3 font-weight-normal">Log in</h2>
+         </mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+         <div class="mat-small">Not registered yet?</div>
+         <a class="mat-small" [routerLink]="'/create-account'">Create an acccount</a>
+      </mat-card-actions>
+      <mat-card-content>
+         <mat-form-field appearance="standard">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="pat@example.com" [formControl]="email" type="email" required autocomplete="email">
+            <mat-error *ngIf="email.hasError('required')">Please enter an Email.</mat-error>
+            <mat-error *ngIf="email.hasError('email')">Please enter a valid Email.</mat-error>
+         </mat-form-field>
+         <mat-form-field appearance="standard">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" [formControl]="password" type="password" required autocomplete="current-password">
+            <mat-error *ngIf="password.hasError('required')">Please enter a Password.</mat-error>
+         </mat-form-field>
+         <div class="mat-error">
+            {{errorMessage}}
+         </div>
+         <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+      </mat-card-content>
+      <mat-card-actions>
+         <a class="mat-small" [routerLink]="'/forgot-password'">Forgot password?</a>
+      </mat-card-actions>
+      <mat-card-actions>
+         <button class="login-button" mat-raised-button color="primary" (click)="login()" disabled="{{!email.valid || !password.valid}}">Log in</button>
+      </mat-card-actions>
+   </mat-card>
+</div>

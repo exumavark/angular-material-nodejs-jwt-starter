@@ -1,0 +1,21 @@
+<div class="mat-app-background basic-container">
+  <div class="container" [class.is-mobile]="mobileQuery.matches">
+
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="snav.toggle()" *ngIf="isLoggedIn()"><mat-icon>menu</mat-icon></button>
+      <a mat-button class="app-name" [routerLink]="'/home'">{{title}}</a>
+      <div class="flex-spacer"></div>
+      <a mat-button [routerLink]="'/profile'" *ngIf="isLoggedIn()">{{email()}}</a>
+      <button mat-button (click)="logout()" *ngIf="isLoggedIn()">Log out</button>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <app-nav-menu></app-nav-menu>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</div>

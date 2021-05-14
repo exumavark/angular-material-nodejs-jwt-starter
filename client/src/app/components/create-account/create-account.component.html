@@ -1,0 +1,55 @@
+<div class="basic-container">
+   <mat-card class="create-account-card">
+      <mat-card-header>
+         <mat-card-title>
+            <h2 class="h3 mb-3 font-weight-normal">Create account</h2>
+         </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+         <mat-form-field appearance="standard">
+            <mat-label>Id no</mat-label>
+            <input matInput placeholder="Id no" [formControl]="idNo" type="text">
+         </mat-form-field>
+         <mat-form-field appearance="standard">
+            <mat-label>Firstname</mat-label>
+            <input matInput placeholder="Firstname" [formControl]="firstname" type="text" required>
+            <mat-error *ngIf="email.hasError('required')">Please enter your Firstname.</mat-error>
+         </mat-form-field>
+         <mat-form-field appearance="standard">
+            <mat-label>Lastname</mat-label>
+            <input matInput placeholder="Lastname" [formControl]="lastname" type="text" required>
+            <mat-error *ngIf="email.hasError('required')">Please enter your Lastname.</mat-error>
+         </mat-form-field>
+         <mat-form-field appearance="standard">
+            <mat-label>Contact no</mat-label>
+            <input matInput placeholder="Contact no" [formControl]="contactNo" type="tel">
+         </mat-form-field>
+         <mat-form-field appearance="standard">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="pat@example.com" [formControl]="email" type="email" required>
+            <mat-error *ngIf="email.hasError('required')">Please enter your Email.</mat-error>
+            <mat-error *ngIf="email.hasError('email')">Please enter a valid Email.</mat-error>
+         </mat-form-field>
+         <mat-form-field appearance="standard">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" [formControl]="password" type="password" required>
+            <mat-error *ngIf="password.hasError('required')">Please enter a Password.</mat-error>
+         </mat-form-field>
+         <mat-form-field appearance="standard">
+            <mat-label>Confirm password</mat-label>
+            <input matInput placeholder="Confirm password" [formControl]="confirmPassword" type="password" required>
+            <mat-error *ngIf="confirmPassword.hasError('required')">Please confirm your Password.</mat-error>
+         </mat-form-field>
+         <div class="mat-error">
+            {{errorMessage}}
+         </div>
+         <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+      </mat-card-content>
+      <mat-card-actions>
+         <button class="create-account-button" mat-raised-button color="primary" (click)="create()" disabled="{{!firstname.valid || !lastname.valid || !email.valid || !password.valid || !confirmPassword.valid || !confirmPassword.valid}}">Create</button>
+      </mat-card-actions>
+      <mat-card-actions>
+         <a class="mat-small" [routerLink]="'/login'">Back to Login</a>
+      </mat-card-actions>
+   </mat-card>
+</div>

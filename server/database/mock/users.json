@@ -1,0 +1,15 @@
+{
+   "users": [
+      {
+         "userId": 1,
+         "profileId": 2,
+         "idNo": "1111",
+         "firstname": "test",
+         "lastname": "test",
+         "contactNo": "2222",
+         "email": "test@test.com",
+         "hash": "$2b$10$5nOCDizNfpsg8u24/R2iROy1sPevsI6lqQMi43Ml2zzb6FEHE2fBy",
+         "notes": "3333"
+      }
+   ]
+}

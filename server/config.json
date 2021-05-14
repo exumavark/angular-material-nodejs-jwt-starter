@@ -1,0 +1,7 @@
+{
+   "port": 4300,
+   "jwt": {
+      "secretKey": "0123456789",
+      "expiresIn": "1h"
+   }
+}
