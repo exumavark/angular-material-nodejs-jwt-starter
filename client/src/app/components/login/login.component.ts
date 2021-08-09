@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
    selector: 'app-login',
@@ -13,10 +14,13 @@ export class LoginComponent implements OnInit {
    showSpinner: boolean;
    errorMessage: string;
 
-   constructor(private authService: AuthService) { }
+   constructor(private router: Router, private authService: AuthService) { }
 
    ngOnInit() {
       this.showSpinner = false;
+      if (this.authService.isLoggedIn()) {
+         this.router.navigate(['home']);
+      }
    }
 
    login() {

@@ -25,7 +25,12 @@ export class AppComponent implements OnDestroy, AfterViewInit {
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
-      this.globals.openSideNavRequestEvent.subscribe(() => { this.snav.open(); });
+      this.globals.openSideNavRequestEvent.subscribe(() => {
+         this.snav.open();
+         if (this.router.url == "/login") {
+            this.router.navigate(['home']);
+         }
+      });
    }
 
    ngOnInit() {
@@ -45,7 +50,6 @@ export class AppComponent implements OnDestroy, AfterViewInit {
    }
 
    onLoggedInEvent() {
-      this.router.navigate(['home']);
    }
 
    onLoggedOutEvent() {
